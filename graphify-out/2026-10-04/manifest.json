@@ -1,0 +1,98 @@
+{
+  "client/main.lua": {
+    "mtime": 1791104330.9560716,
+    "seen": 1791104361.459439,
+    "ast_hash": "5513b14bd767ca2fdba7b0e144d4919f",
+    "semantic_hash": ""
+  },
+  "examples/mz_houses_usage.lua": {
+    "mtime": 1779649560.0,
+    "seen": 1789322353.510075,
+    "ast_hash": "1b48cbe5ae066c9124728eefabfc5ffa",
+    "semantic_hash": "1b48cbe5ae066c9124728eefabfc5ffa"
+  },
+  "fxmanifest.lua": {
+    "mtime": 1790204863.0,
+    "seen": 1791103943.0755217,
+    "ast_hash": "0aca6e4712390d561b9a8db97c7a6451",
+    "semantic_hash": ""
+  },
+  "server/main.lua": {
+    "mtime": 1786403507.0966132,
+    "seen": 1789322353.510075,
+    "ast_hash": "b936d27b7e13115ed96e9148df5cba2b",
+    "semantic_hash": "b936d27b7e13115ed96e9148df5cba2b"
+  },
+  "shared/config.lua": {
+    "mtime": 1791102930.3255825,
+    "seen": 1791103943.0755217,
+    "ast_hash": "72129d3e2556afc56aa22388ddb9c16d",
+    "semantic_hash": ""
+  },
+  "tests/focus_toggle_contract_harness.lua": {
+    "mtime": 1785353956.1706934,
+    "seen": 1789322353.510075,
+    "ast_hash": "2adb3196ab1bb2b10885f87f3561a309",
+    "semantic_hash": "2adb3196ab1bb2b10885f87f3561a309"
+  },
+  "tests/server_debug_security_harness.lua": {
+    "mtime": 1786403507.1016102,
+    "seen": 1789322353.510075,
+    "ast_hash": "bbaef8fc17a4759cdea9aed9602d4ec7",
+    "semantic_hash": "bbaef8fc17a4759cdea9aed9602d4ec7"
+  },
+  "web/app.js": {
+    "mtime": 1791104098.8224425,
+    "seen": 1791104142.231633,
+    "ast_hash": "541ff46cd0eac8f8ee92d68fad5c5758",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1791103618.9210274,
+    "seen": 1791103943.0755217,
+    "ast_hash": "b0e68bb64f35f08d64eb1a29b334521d",
+    "semantic_hash": ""
+  },
+  "docs/CONTEXT_THEME_CONTRACT.md": {
+    "mtime": 1791103762.0208237,
+    "seen": 1791103943.0755217,
+    "ast_hash": "f1c005721982020152b13c6fff2c74e0",
+    "semantic_hash": ""
+  },
+  "docs/INTEGRATION_NOTES.md": {
+    "mtime": 1785353933.9383883,
+    "seen": 1789322353.510075,
+    "ast_hash": "fa376c9818c1b4efcacb6123d6664071",
+    "semantic_hash": "fa376c9818c1b4efcacb6123d6664071"
+  },
+  "docs/INTERACTION_FOCUS_CONTRACT.md": {
+    "mtime": 1785353956.1696937,
+    "seen": 1789322353.510075,
+    "ast_hash": "b7397f1e3d9c68aaac48e1b302d51af1",
+    "semantic_hash": "b7397f1e3d9c68aaac48e1b302d51af1"
+  },
+  "web/index.html": {
+    "mtime": 1791102769.8560033,
+    "seen": 1791103943.0755217,
+    "ast_hash": "ca0d8dd52052a18d0f558ec226c82ac5",
+    "semantic_hash": ""
+  },
+  "tests/player_selector_contract_harness.lua": {
+    "mtime": 1791104338.050488,
+    "seen": 1791104361.459439,
+    "ast_hash": "7a94c78d9ca7672b22fcc2991bbe999f",
+    "semantic_hash": ""
+  },
+  "docs/DASHBOARD_LAYOUT_CONTRACT.md": {
+    "mtime": 1790204863.0,
+    "seen": 1791103943.0755217,
+    "ast_hash": "4bf7e6e865bbf603bc875667ad72c0a4",
+    "semantic_hash": ""
+  },
+  "graphify-out/memory/query_20261004_085307_como_o_player_selector_se_integra_ao_mz_menu.md": {
+    "mtime": 1791103987.1905408,
+    "seen": 1791104142.231633,
+    "ast_hash": "31a84334f194f8b4281b29ac86499177",
+    "semantic_hash": ""
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "objective": "GRAPHIFY_BLOCK_MZ_MENU",
+  "resource": "mz_menu",
+  "source_role": "SHARED_UI_MENU_INFRASTRUCTURE",
+  "baseline": "POST_WAVE_1_PRE_WAVE_2",
+  "mode": "READ_ONLY_ANALYSIS",
+  "findings_current_vs_target": "NOT_PRODUCED",
+  "A_corpus": {
+    "physical_files_excluding_git_and_graphify_out": 15,
+    "supported_files": 13,
+    "words": 9088,
+    "code_or_structured": 8,
+    "documents": 5,
+    "sql": 0,
+    "images": 0,
+    "fonts": 0,
+    "media": 0,
+    "assets": [
+      {"path": "web/index.html", "kind": "NUI document", "bytes": 1909},
+      {"path": "web/style.css", "kind": "stylesheet", "bytes": 12048},
+      {"path": "web/app.js", "kind": "NUI logic with embedded SVG path assets", "bytes": 21918}
+    ],
+    "unclassified": [".gitattributes", "web/style.css"],
+    "sensitive_skips": 0,
+    "read_errors": 0,
+    "ignored_relevant_paths": [],
+    "pruned_paths": [".git/", "graphify-out/"],
+    "graphifyignore_patterns": [],
+    "sql_files_found": 0,
+    "sql_files_ast_parsed": 0,
+    "sql_files_semantic_only": 0
+  },
+  "B_nodes_edges": {
+    "nodes": 124,
+    "ast_nodes": 106,
+    "semantic_nodes": 18,
+    "raw_edges": 233,
+    "ast_edges": 216,
+    "semantic_edges": 17,
+    "candidate_edges": 233,
+    "final_edges": 233,
+    "hyperedges": 2,
+    "communities": 16,
+    "connected_components": 8,
+    "directionality": "UNDIRECTED_GRAPH; extraction edges retain source and target fields",
+    "self_loops": 0,
+    "exact_duplicate_edges": 0,
+    "dangling_endpoint_edges": 0,
+    "missing_endpoint_edges": 0,
+    "collapsed_relations": 0,
+    "relation_counts": {"calls":116,"contains":98,"implements":6,"rationale_for":5,"conceptually_related_to":3,"indirect_call":2,"semantically_similar_to":2,"references":1}
+  },
+  "C_communities": [
+    {"id":0,"name":"Web DOM State","size":20,"cohesion":0.1,"description":"NUI DOM references, root web state, theme application, and static icon registry."},
+    {"id":1,"name":"Contracts and Boundaries","size":18,"cohesion":0.1111111111111111,"description":"Documented presentation, ownership, security, theme, movement, and compatibility contracts."},
+    {"id":2,"name":"Context Registry Routing","size":17,"cohesion":0.18382352941176472,"description":"Context normalization, registration, lookup, option routing, lifecycle callbacks, and theme inheritance."},
+    {"id":3,"name":"Web Rendering Helpers","size":9,"cohesion":0.3333333333333333,"description":"HTML escaping, SVG creation, option/input rendering, notifications, and alert variants."},
+    {"id":4,"name":"Menu Dialog Public API","size":8,"cohesion":0.42857142857142855,"description":"Client public notification, input, alert, confirmation, and context status functions."},
+    {"id":5,"name":"Backend Compatibility","size":8,"cohesion":0.39285714285714285,"description":"Native NUI readiness and optional ox_lib capability checks."},
+    {"id":6,"name":"Server Relay Harness","size":8,"cohesion":0.2857142857142857,"description":"Server target validation, client event relays, and relay security test harness."},
+    {"id":7,"name":"Movement Input State","size":7,"cohesion":0.2857142857142857,"description":"Movement passthrough state, toggle validation, key handling, and combat control suppression."},
+    {"id":8,"name":"Async Dialog Lifecycle","size":7,"cohesion":0.47619047619047616,"description":"Promise request IDs, pending responses, dialog open/restore behavior, and current theme dispatch."},
+    {"id":9,"name":"Web Interaction Lifecycle","size":6,"cohesion":0.3333333333333333,"description":"Browser-side NUI post bridge, context open/close, focus selection, and movement display."},
+    {"id":10,"name":"Configuration Helpers","size":5,"cohesion":0.5,"description":"Configuration access, defaults, debug output, movement enablement, and notification normalization."},
+    {"id":11,"name":"Focus and Close Lifecycle","size":5,"cohesion":0.4,"description":"NUI focus state, context focus aliases, close behavior, and theme reset."},
+    {"id":12,"name":"Contract Tests","size":3,"cohesion":0.6666666666666666,"description":"Static contract harness for exports and focus/movement behavior."},
+    {"id":13,"name":"Houses Usage Example","size":1,"cohesion":1.0,"description":"Non-runtime consumer example for mz_houses."},
+    {"id":14,"name":"Resource Manifest","size":1,"cohesion":1.0,"description":"FiveM resource and NUI file declaration."},
+    {"id":15,"name":"Shared Configuration","size":1,"cohesion":1.0,"description":"Default backend, interaction, theme, and test configuration."}
+  ],
+  "D_high_connectivity_nodes": [
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"cfg()","file":"client/main.lua","degree":13,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"MZMenu.ShowContext()","file":"client/main.lua","degree":11,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"setFocus()","file":"client/main.lua","degree":8,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"trim()","file":"client/main.lua","degree":8,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"MZMenu.Notify()","file":"client/main.lua","degree":8,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"normalizeMenu()","file":"client/main.lua","degree":8,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"resolveContextVisual()","file":"client/main.lua","degree":7,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"nuiInputDialog()","file":"client/main.lua","degree":7,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"nuiAlertDialog()","file":"client/main.lua","degree":7,"type":"function"},
+    {"classification":"HIGH_CONNECTIVITY_NODE","symbol":"escapeHtml()","file":"web/app.js","degree":7,"type":"function"}
+  ],
+  "E_public_surfaces": {
+    "client_exports": [
+      {"name":"Notify","side":"client","purpose":"show notification","callback_or_async":"sync dispatch","generic_or_domain_specific":"GENERIC"},
+      {"name":"OpenContext","side":"client","purpose":"register and open a context menu","callback_or_async":"sync dispatch; options may callback","generic_or_domain_specific":"GENERIC"},
+      {"name":"OpenMenu","side":"client","purpose":"OpenContext alias","callback_or_async":"sync dispatch","generic_or_domain_specific":"GENERIC"},
+      {"name":"RegisterContext","side":"client","purpose":"normalize and store menu","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"RegisterSimpleMenu","side":"client","purpose":"simple context registration adapter","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"ShowContext","side":"client","purpose":"open stored context","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"CloseContext","side":"client","purpose":"close and reset focus/theme","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"CloseMenu","side":"client","purpose":"CloseContext alias","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"HideContext","side":"client","purpose":"CloseContext alias","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"InputDialog","side":"client","purpose":"collect typed input rows","callback_or_async":"blocking await/promise","generic_or_domain_specific":"GENERIC"},
+      {"name":"AlertDialog","side":"client","purpose":"alert/confirm dialog","callback_or_async":"blocking await/promise","generic_or_domain_specific":"GENERIC"},
+      {"name":"Confirm","side":"client","purpose":"boolean confirmation adapter","callback_or_async":"blocking through AlertDialog","generic_or_domain_specific":"GENERIC"},
+      {"name":"IsReady","side":"client","purpose":"backend availability","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"GetBackend","side":"client","purpose":"report active/fallback backend","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"SetContextFocus","side":"client","purpose":"legacy focus state setter","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"ToggleContextFocus","side":"client","purpose":"legacy focus toggle","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"IsContextFocused","side":"client","purpose":"query context focus","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"SetMovementEnabled","side":"client","purpose":"set movement passthrough","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"ToggleMovement","side":"client","purpose":"toggle movement passthrough","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"},
+      {"name":"IsMovementEnabled","side":"client","purpose":"query effective movement passthrough","callback_or_async":"sync","generic_or_domain_specific":"GENERIC"}
+    ],
+    "server_exports": [
+      {"name":"Notify","side":"server","purpose":"relay notify to target client","callback_or_async":"sync fire-and-return","generic_or_domain_specific":"GENERIC"},
+      {"name":"OpenContext","side":"server","purpose":"relay menu open to target client","callback_or_async":"sync fire-and-return","generic_or_domain_specific":"GENERIC"},
+      {"name":"OpenMenu","side":"server","purpose":"OpenContext relay alias","callback_or_async":"sync fire-and-return","generic_or_domain_specific":"GENERIC"},
+      {"name":"AlertDialog","side":"server","purpose":"relay alert to target client; no result callback","callback_or_async":"sync fire-and-return","generic_or_domain_specific":"GENERIC"},
+      {"name":"CloseContext","side":"server","purpose":"relay close to target client","callback_or_async":"sync fire-and-return","generic_or_domain_specific":"GENERIC"},
+      {"name":"CloseMenu","side":"server","purpose":"close relay alias","callback_or_async":"sync fire-and-return","generic_or_domain_specific":"GENERIC"},
+      {"name":"HideContext","side":"server","purpose":"close relay alias","callback_or_async":"sync fire-and-return","generic_or_domain_specific":"GENERIC"}
+    ],
+    "net_events": ["mz_menu:client:notify","mz_menu:client:openContext","mz_menu:client:alert","mz_menu:client:close"],
+    "commands": ["mz_menu_focus_toggle","mz_menu_movement_toggle","mz_menu_test (conditional)","mz_menu_theme_test (conditional)"],
+    "nui_callbacks_js_to_lua": ["ready","toggleFocus","toggleMovement","select","back","close","inputSubmit","inputCancel","alertSubmit"],
+    "lua_to_js_actions": ["theme","openContext","close","notify","inputDialog","alertDialog","movementMode"],
+    "framework_callbacks": [],
+    "server_net_event_registrations": []
+  },
+  "F_menu_primitives": {
+    "classification":"GENERIC_UI_PRIMITIVE",
+    "present":["context","list/options","select input","text input","number input","checkbox","confirmation","alert","progress display","submenu","back","close","textarea","date input","time input","color input","notifications"],
+    "absent":["radio","search/filter behavior","pagination"]
+  },
+  "G_menu_lifecycle": {
+    "flow":"consumer resource -> client/server mz_menu export -> normalize/register/show -> SendNUIMessage -> web render -> NUI callback -> option callback/event/serverEvent/command -> consumer owner -> close or subsequent ShowContext",
+    "open":"OpenContext registers then ShowContext; ShowContext validates ID and stored context.",
+    "close":"CloseContext or NUI close clears current ID/movement, releases focus, and restores global theme; NUI close runs onExit lifecycle.",
+    "back":"NUI posts current ID; Lua invokes onBack/onBackEvent or shows the menu parent.",
+    "replace":"No named replace API; showing another context while one is open replaces CurrentContextId and preserves movement mode.",
+    "refresh":"No explicit refresh API; consumers re-register and/or ShowContext.",
+    "focus":"SetNuiFocus plus SetNuiFocusKeepInput; movement and legacy focus exports control it.",
+    "escape":"Dialog Escape cancels; context Escape closes rather than traversing parent.",
+    "resource_stop":"Only mz_menu's own stop clears local current/dialog/movement and focus state.",
+    "invalid_callback":"Unknown request ID returns false internally; NUI callback still acknowledges ok before resolution.",
+    "duplicate_open":"No guard; same ID overwrites ContextStore and opens latest normalized content.",
+    "nested_menu":"Parent is a menu ID link; no explicit stack; theme traversal uses seen-set and depth limit 32."
+  },
+  "H_ui_state_session": {
+    "ui_session_state":["ContextStore","PendingRequests","RequestCounter","NuiReady","CurrentContextId","NuiFocused","NuiDialogOpen","MovementEnabled","LastFocusToggleAt","LastMovementToggleAt","web.currentMenu","web.focusedIndex","web.dialogRequestId","web.dialogType"],
+    "player_session_state":[],
+    "menu_id":"stored string ID; generated from game timer when omitted",
+    "callback_id":"prefix + game timer + monotonic counter",
+    "current_resource":"browser uses GetParentResourceName only for NUI endpoint; not consumer ownership",
+    "parent_child":"single parent ID via menu field",
+    "stack":"absent",
+    "pending_timeout":"absent",
+    "citizenid_source_player_ownership_signal":"server target source is numeric transport routing only; no player identity/session ownership"
+  },
+  "I_nui_trust_boundary": {
+    "classification":"UI_TRUST_BOUNDARY",
+    "path":"NUI fetch -> named RegisterNUICallback -> local validation/lookup -> generic option router -> consumer callback/event",
+    "action_allowlist":"implicit fixed callback registrations and fixed Lua-to-JS action comparisons; unknown JS message actions no-op",
+    "id_validation":"select/back trim ID and require registered context; dialog responses require a pending request ID",
+    "callback_validation":"option functions checked by type; lifecycle functions checked by type; event/command names checked non-empty",
+    "payload_validation":"partial: index tonumber and option existence; theme color/position/width sanitized; dialog values/results otherwise loosely accepted",
+    "resource_ownership":"absent",
+    "focus_handling":"state-gated toggles, 150ms debounce, dialogs force focus and restore movement state",
+    "malformed_input_behavior":"mostly acknowledge then silently no-op; unresolved request IDs return false internally; JS post failures are caught to null"
+  },
+  "J_domain_logic_signals": [
+    {"classification":"DOMAIN_LOGIC_CANDIDATE","callsite":"examples/mz_houses_usage.lua:4-50","domain":"houses/property","operation":"consumer example opens context/input and dispatches createProperty/debugInfo events","generic_presentation_or_domain_logic":"DOMAIN_LOGIC in non-runtime consumer example"},
+    {"classification":"DOMAIN_LOGIC_CANDIDATE","callsite":"client/main.lua:994-1074","domain":"staff/organization profile vocabulary","operation":"theme-test labels job/gang/business/government/vip/event/staff","generic_presentation_or_domain_logic":"GENERIC_PRESENTATION test data"},
+    {"classification":"DOMAIN_LOGIC_CANDIDATE","callsite":"web/app.js:30-80","domain":"houses/garage/vehicle/door/economy/staff vocabulary","operation":"embedded icon names","generic_presentation_or_domain_logic":"GENERIC_PRESENTATION asset vocabulary"},
+    {"classification":"DOMAIN_LOGIC_CANDIDATE","callsite":"README.md and docs","domain":"houses/org/vehicles/garage/admin","operation":"integration examples and boundary documentation","generic_presentation_or_domain_logic":"DOCUMENTATION_ONLY"}
+  ],
+  "K_authorization_signals": {
+    "implemented_or_consumed_in_product":[],
+    "searched":["HasGlobalPermission","CanPlayerPerformAction","ACE","staff checks","org checks","job checks","owner checks"],
+    "ui_visibility_policy":"disabled/readOnly prevent option selection in UI and client router; this is presentation behavior, not authority",
+    "server_authorization":"not implemented by mz_menu; README demonstrates IsPlayerAceAllowed in the consumer resource",
+    "classification":"UI_VISIBILITY_POLICY distinct from SERVER_AUTHORIZATION"
+  },
+  "L_mz_admin_relation": {
+    "classification":"ADMIN_UI_CONSUMER_RELATION",
+    "observed":"documentation mentions /admin and generic staff-themed test data; no mz_admin import, export call, callback, route, refresh, or action dispatch in runtime corpus",
+    "structural_determination":"mz_menu contains generic presentation only; no canonical admin logic observed"
+  },
+  "M_mz_org_relation": {
+    "classification":"ORG_UI_CONSUMER_RELATION",
+    "observed":"README names mz_org as a business owner and theme tests use generic org-profile labels; no grades, membership, org actions, or mz_org runtime calls",
+    "ownership_conclusion":"NOT_MADE"
+  },
+  "N_property_cluster_relation": [
+    {"resource":"mz_houses","relation":"example/docs consumer","api_used":["OpenContext","InputDialog"],"purpose":"property create/search UI followed by consumer-owned server events","kind":"domain-specific consumer example outside runtime manifest"},
+    {"resource":"mz_garagem","relation":"documentation distinction and garage icon only","api_used":[],"purpose":"distinguishes garage coordinate capture freeze from menu movement state","kind":"presentation/documentation"},
+    {"resource":"mz_doors","relation":"door icon vocabulary only","api_used":[],"purpose":"generic icon","kind":"presentation"},
+    {"resource":"mz_interiors","relation":"not observed","api_used":[],"purpose":null,"kind":"none"},
+    {"resource":"mz_furniture","relation":"not observed","api_used":[],"purpose":null,"kind":"none"},
+    {"resource":"mz_world_editor","relation":"not observed","api_used":[],"purpose":null,"kind":"none"},
+    {"resource":"mz_props","relation":"not observed","api_used":[],"purpose":null,"kind":"none"}
+  ],
+  "O_other_consumers": [
+    {"resource":"mz_houses","api_used":["OpenContext","InputDialog"],"purpose":"documented/example property administration presentation"},
+    {"resource":"mz_org","api_used":[],"purpose":"named in documentation as business-rule owner; specific calls not present in corpus"},
+    {"resource":"mz_vehicles","api_used":[],"purpose":"named in documentation as business-rule owner; specific calls not present in corpus"}
+  ],
+  "P_database_persistence": {
+    "sql_files":0,"mysql_usage":false,"local_storage":false,"user_preferences":false,"menu_state_persistence":false,
+    "cache":"in-memory ContextStore and PendingRequests only; Graphify cache is analysis output",
+    "writes":[]
+  },
+  "Q_ui_web_structure": {
+    "html":"web/index.html: context panel, identity header, option list, keyboard/footer hints, dialog overlay, toast container",
+    "javascript":"web/app.js: single-file DOM renderer, NUI POST bridge, message action router, dialog/form builders, input and keyboard lifecycle",
+    "css":"web/style.css: single stylesheet with theme variables, panel/options/dialog/toast/focus states and responsive styling",
+    "assets":"embedded SVG path registry; no external images, fonts, CDN, or compiled bundle",
+    "components":"imperative render helpers, not framework components",
+    "router":"window message action comparisons and NUI endpoint post(name,data)",
+    "render_cycle":"Lua SendNUIMessage -> window message -> targeted render/state update",
+    "dom_management":"textContent for core labels; escaped HTML for dynamic template strings; innerHTML for known SVG/templates",
+    "accessibility_helpers":["semantic buttons","aria-label on back/close/movement","form labels","keyboard ArrowUp/ArrowDown/Enter/Escape","initial dialog field focus"],
+    "high_fan_files":[{"file":"client/main.lua","degree":56},{"file":"web/app.js","degree":34}]
+  },
+  "R_input_focus": {
+    "classification":"UI_INPUT_LIFECYCLE",
+    "set_nui_focus":"setFocus sets keyboard and mouse focus together",
+    "keep_input":"SetNuiFocusKeepInput mirrors effective movement passthrough",
+    "keyboard":["F1-F12 validated toggle key; F6 default","ArrowDown","ArrowUp","Enter","Escape"],
+    "mouse":"button click handlers for options, close, back, movement, and dialogs",
+    "game_controls":"combat controls disabled each frame only while movement passthrough is active",
+    "focus_restoration":"dialogs restore prior movement; context close and own resource stop release focus",
+    "close_behavior":"Escape closes dialog as cancel or closes full context"
+  },
+  "S_error_handling": {
+    "invalid_menu_id":"ShowContext returns invalid_context_id or context_not_registered",
+    "invalid_callback":"resolveRequest returns false for unknown request; NUI response remains acknowledged",
+    "js_exception_handling":"NUI fetch rejection caught to null; no general render try/catch",
+    "lua_pcall":"ox_lib inputDialog and alertDialog only",
+    "timeout":"none for pending dialog promises",
+    "stale_menu":"no explicit stale detection; missing context lookups no-op/return error",
+    "resource_stopped":"own resource stop releases focus/state; pending promises and consumer registrations have no explicit cleanup",
+    "consumer_unavailable":"client/server events and commands dispatch without availability acknowledgement"
+  },
+  "T_resource_ownership": {
+    "get_invoking_resource":false,"registration_owner":false,"callback_owner":false,"cleanup_by_consumer_resource":false,
+    "own_resource_stop_cleanup":true,
+    "classification":"RESOURCE_SCOPED_UI_STATE not applicable; state is global to mz_menu client instance"
+  },
+  "U_internal_structure": {
+    "api":"MZMenu table plus client/server exports",
+    "registry":"ContextStore keyed by menu ID",
+    "router":"executeOption selects local callback, submenu, client event, server event, command, or params adapter",
+    "state":"context, requests, focus/dialog, movement, debounce timers",
+    "nui_bridge":"SendNUIMessage and RegisterNUICallback paired with browser fetch/message handlers",
+    "callbacks":"local functions/events and promise-backed dialog results",
+    "web_ui":"plain HTML/CSS/JS",
+    "helpers":"normalization, sanitization, theme inheritance, notification payloads, rendering and escaping",
+    "compatibility":"legacy aliases and optional ox_lib backend",
+    "tests_tooling":"two Lua contract harnesses and one mz_houses usage example"
+  },
+  "V_external_relations": [
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"mz_core","observed":"brand/ecosystem documentation only; no runtime call"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"mz_admin","observed":"documentation command reference only"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"mz_org","observed":"documentation/business-owner reference only"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"mz_houses","observed":"documented and example consumer"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"mz_furniture","observed":"not observed"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"mz_world_editor","observed":"not observed"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"mz_props","observed":"not observed"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"mz_notify","observed":"not observed"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"ox_lib","observed":"optional backend/compatibility; manifest dependency commented out"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"FiveM natives","observed":"NUI focus/message/callbacks, events, commands, key mapping, promises, timers, thread/control APIs"},
+    {"classification":"EXTERNAL_RESOURCE_RELATION","target":"chat","observed":"chat:addMessage notification fallback"}
+  ],
+  "W_cycles": {
+    "import_module_cycles":"none; no require/import module graph",
+    "js_module_cycles":"none; one non-module script",
+    "lua_module_cycles":"none; manifest-loaded scripts without require/import",
+    "undirected_cycle_basis":117,
+    "directed_call_semantic_cycles":1,
+    "directed_cycle_detail":"executeOption -> ShowContext -> normalizeMenu -> oxOption -> executeOption; conditional menu-option adapter loop, not an import cycle",
+    "semantic_loops":["parent menu navigation can move between contexts","theme inheritance guards repeated parent IDs with a seen set and maximum depth 32","consumer callbacks/events may reopen or replace contexts"]
+  },
+  "X_current_responsibility_signals": {
+    "menu_api":true,"nui":true,"context_menu":true,"dialogs":true,"callback_routing":true,"ui_state":true,
+    "resource_scoped_state":false,"input_focus":true,"presentation":true,"domain_specific_signals":"examples/test vocabulary only",
+    "authorization_signals":"boundary documentation only","persistence":false,"tests_tooling":true
+  },
+  "Y_duplication_candidates": [
+    {"classification":"DUPLICATION_CANDIDATE","signal":"CloseContext/CloseMenu/HideContext aliases repeat client and server close surface"},
+    {"classification":"DUPLICATION_CANDIDATE","signal":"OpenContext/OpenMenu aliases repeat client and server open surface"},
+    {"classification":"DUPLICATION_CANDIDATE","signal":"Lua sanitizeThemePatch and JS setTheme both validate hex colors, width, and position"},
+    {"classification":"DUPLICATION_CANDIDATE","signal":"nuiInputDialog and nuiAlertDialog repeat request ID, focus lock, send, await, and restore sequence"},
+    {"classification":"DUPLICATION_CANDIDATE","signal":"inputSubmit/inputCancel/alertSubmit wrappers repeat acknowledge and resolveRequest pattern"},
+    {"classification":"DUPLICATION_CANDIDATE","signal":"close paths repeat current state, movement, focus, and theme reset behavior"},
+    {"classification":"DUPLICATION_CANDIDATE","signal":"repeated CSS state/variant patterns for buttons, options, dialog variants, and scrollbars"},
+    {"classification":"DUPLICATION_CANDIDATE","signal":"semantic similarity links connect duplicated boundary concepts across README and integration docs"}
+  ],
+  "Z_generic_ui_vs_domain_ui": [
+    {"symbol_or_file":"client/main.lua:MZMenu public API","current_purpose":"generic menu/dialog/notification/focus lifecycle","generic_ui":true,"domain_specific":false,"domain_if_any":null},
+    {"symbol_or_file":"client/main.lua:executeOption","current_purpose":"generic action dispatch contract","generic_ui":true,"domain_specific":false,"domain_if_any":null},
+    {"symbol_or_file":"client/main.lua:mz_menu_theme_test","current_purpose":"visual theme test profiles","generic_ui":true,"domain_specific":false,"domain_if_any":"uses staff/org-like labels as fixtures"},
+    {"symbol_or_file":"server/main.lua","current_purpose":"numeric target validation and client-event relay","generic_ui":true,"domain_specific":false,"domain_if_any":null},
+    {"symbol_or_file":"web/app.js","current_purpose":"generic renderer and input bridge","generic_ui":true,"domain_specific":false,"domain_if_any":"domain-shaped icon vocabulary only"},
+    {"symbol_or_file":"shared/config.lua","current_purpose":"generic backend/theme/input defaults","generic_ui":true,"domain_specific":false,"domain_if_any":null},
+    {"symbol_or_file":"examples/mz_houses_usage.lua","current_purpose":"consumer integration example","generic_ui":false,"domain_specific":true,"domain_if_any":"houses/property; excluded from runtime manifest"},
+    {"symbol_or_file":"docs/*.md and README.md","current_purpose":"contracts and integration guidance","generic_ui":true,"domain_specific":false,"domain_if_any":"domain references explain ownership boundaries"}
+  ],
+  "AA_graph_health": {
+    "extracted_edges":225,"inferred_edges":8,"ambiguous_edges":0,"unresolved_edges":0,"dangling_edges":0,"duplicate_edges":0,
+    "duplicate_symbol_label_groups":{"main.lua":["client_main","server_main"],"expect()":["tests_focus_toggle_contract_harness_expect","tests_server_debug_security_harness_expect"]},
+    "parse_warnings":[],"unsupported_syntax":[],"failed_sources":[],"sql_parser_availability":"not exercised; no SQL files",
+    "health":"OK; no dangling, missing, self-loop, duplicate, or collapsed extraction edges"
+  },
+  "AB_generated_files": ["graph.json","graph.html","GRAPH_REPORT.md","BASELINE_BLOCK.json","manifest.json","cost.json",".graphify_health.json",".graphify_labels.json","cache/",".graphify_python",".graphify_root"],
+  "AC_sha256": {"MZ_MENU_GRAPH_SHA256":"5488C9ADC1A064DE1E21AD1095C3CF9ED76B84666D2C23D9D55A10B8A29EE618"},
+  "AD_git_state": {
+    "before":{"head":"74f385e650819b9fd0b46eac76df8b8b96ab5a2a","branch":"main","tracking":"origin/main","remote":"origin https://github.com/mz-core/mz_menu.git","staged":0,"unstaged":0,"untracked":0,"working_tree":"clean"},
+    "after":{"head":"74f385e650819b9fd0b46eac76df8b8b96ab5a2a","branch":"main","tracking":"origin/main","remote":"origin https://github.com/mz-core/mz_menu.git","staged":0,"unstaged":0,"untracked":23,"untracked_scope":"graphify-out only","working_tree":"dirty only because Graphify outputs are untracked"},
+    "preexisting_changes":"none",
+    "product_files_byte_identical":true
+  },
+  "completion_guards": {
+    "PRODUCT_FILES_CHANGED": 0,
+    "GATE_2": "UNCHANGED",
+    "WAVE_2": "NOT_STARTED",
+    "GLOBAL_MERGE": "NOT_EXECUTED",
+    "PUSH": "NOT_EXECUTED",
+    "COMMIT": "NOT_EXECUTED",
+    "STASH_RESET_CHECKOUT": "NOT_EXECUTED"
+  }
+}

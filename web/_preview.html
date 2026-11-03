@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MZ Admin — Preview visual (browser-only)</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: #1b2330 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" fill="%231b2330"/><rect width="40" height="40" fill="%231f2836"/><rect x="40" y="40" width="40" height="40" fill="%231f2836"/></svg>'); }
+    #previewBar { position: fixed; top: 8px; right: 8px; z-index: 100; display: flex; gap: 6px; pointer-events: all; }
+    #previewBar button { padding: 7px 12px; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; background: #151a1f; color: #fff; font: 600 12px/1 "Segoe UI", sans-serif; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="app" class="app app--left">
+    <section id="contextPanel" class="mz-panel hidden" aria-live="polite">
+      <div class="mz-panel__accent" aria-hidden="true"></div>
+      <header class="mz-panel__header">
+        <button id="backBtn" class="mz-icon-btn hidden" type="button" title="Voltar" aria-label="Voltar"></button>
+        <span id="headerIcon" class="mz-panel__headerIcon hidden" aria-hidden="true"></span>
+        <div class="mz-panel__titleWrap">
+          <div class="mz-panel__eyebrowRow">
+            <span id="brand" class="mz-panel__brand">MZ Menu</span>
+            <span id="menuBadge" class="mz-panel__badge hidden"></span>
+          </div>
+          <h1 id="menuTitle" class="mz-panel__title">Menu</h1>
+          <p class="mz-panel__subtitle">
+            <span id="subtitleSeparator" class="hidden" aria-hidden="true"></span>
+            <span id="menuSubtitle"></span>
+          </p>
+        </div>
+        <button id="closeBtn" class="mz-icon-btn" type="button" title="Fechar" aria-label="Fechar"></button>
+      </header>
+      <section id="dashboardMeta" class="mz-dashboardMeta hidden">
+        <div id="userCard" class="mz-userCard hidden"></div>
+        <div id="statsGrid" class="mz-stats hidden"></div>
+      </section>
+      <div id="searchWrap" class="mz-search hidden">
+        <span class="mz-search__icon" aria-hidden="true"></span>
+        <input id="menuSearch" type="text" autocomplete="off" spellcheck="false" placeholder="Buscar..." />
+        <span id="searchHint" class="mz-search__hint">CTRL K</span>
+      </div>
+      <div id="selectorFilters" class="mz-selectorFilters hidden" role="group" aria-label="Filtrar jogadores"></div>
+      <p id="selectorSummary" class="mz-selectorSummary hidden" aria-live="polite"></p>
+      <div id="options" class="mz-options scrollbar-thin"></div>
+      <footer class="mz-panel__footer">
+        <span><b>↑ ↓</b> navegar</span>
+        <span><b>Enter</b> selecionar</span>
+        <span><b>Esc</b> voltar</span>
+        <button id="focusToggleBtn" class="mz-panel__focusToggle" type="button">
+          <b id="focusToggleKey">F6</b>
+          <span id="focusToggleLabel">liberar movimento</span>
+        </button>
+      </footer>
+    </section>
+
+    <section id="dialogOverlay" class="mz-dialogOverlay hidden">
+      <div id="dialog" class="mz-dialog"></div>
+    </section>
+
+    <div id="toasts" class="mz-toasts"></div>
+
+    <section id="tablet" class="mz-tablet hidden" aria-live="polite">
+      <div class="mz-tablet__frame">
+        <div class="mz-tablet__accent" aria-hidden="true"></div>
+        <header class="mz-tablet__header">
+          <div class="mz-tablet__brand">
+            <span class="mz-tablet__logo" aria-hidden="true"></span>
+            <div class="mz-tablet__brandText">
+              <span id="tabletBrand" class="mz-tablet__brandLabel">MZ FRAMEWORK</span>
+              <h1 id="tabletTitle" class="mz-tablet__title">ADMIN</h1>
+            </div>
+          </div>
+          <div class="mz-tablet__divider" aria-hidden="true"></div>
+          <div class="mz-tablet__user">
+            <span id="tabletUserInitial" class="mz-tablet__avatar" aria-hidden="true">S</span>
+            <div class="mz-tablet__userText">
+              <div class="mz-tablet__userNameRow">
+                <strong id="tabletUserName" class="mz-tablet__userName">Staff</strong>
+                <span id="tabletCrown" class="mz-tablet__crown hidden" title="Owner" aria-label="Owner"></span>
+              </div>
+              <small id="tabletUserRole" class="mz-tablet__userRole">Staff</small>
+            </div>
+          </div>
+          <button id="tabletCloseBtn" class="mz-icon-btn" type="button" title="Fechar" aria-label="Fechar"></button>
+        </header>
+
+        <nav id="tabletTabs" class="mz-tablet__tabs hidden" aria-label="Abas"></nav>
+
+        <div class="mz-tablet__body">
+          <aside id="tabletSidebar" class="mz-tablet__sidebar hidden">
+            <nav id="tabletNav" class="mz-tablet__nav scrollbar-thin"></nav>
+          </aside>
+          <main class="mz-tablet__content">
+            <div class="mz-tablet__contentHeader">
+              <button id="tabletBackBtn" class="mz-icon-btn hidden" type="button" title="Voltar" aria-label="Voltar"></button>
+              <div class="mz-tablet__contentTitleWrap">
+                <h2 id="tabletViewTitle" class="mz-tablet__viewTitle"></h2>
+                <p id="tabletViewSubtitle" class="mz-tablet__viewSubtitle"></p>
+              </div>
+              <div id="tabletSearchWrap" class="mz-tablet__search hidden">
+                <span class="mz-tablet__searchIcon" aria-hidden="true"></span>
+                <input id="tabletSearch" type="text" autocomplete="off" spellcheck="false" placeholder="Buscar..." />
+              </div>
+            </div>
+            <div id="tabletFilters" class="mz-tablet__filters hidden" role="group" aria-label="Filtrar"></div>
+            <div id="tabletRows" class="mz-tablet__rows scrollbar-thin"></div>
+          </main>
+        </div>
+
+        <section id="tabletModal" class="mz-tablet__modal hidden" aria-live="polite">
+          <div class="mz-tablet__modalFrame">
+            <header class="mz-tablet__modalHeader">
+              <div class="mz-tablet__modalTitleWrap">
+                <h2 id="tabletModalTitle" class="mz-tablet__modalTitle"></h2>
+                <p id="tabletModalSubtitle" class="mz-tablet__modalSubtitle"></p>
+              </div>
+              <button id="tabletModalCloseBtn" class="mz-icon-btn" type="button" title="Fechar" aria-label="Fechar"></button>
+            </header>
+            <div class="mz-tablet__modalContent">
+              <nav id="tabletModalTabs" class="mz-tablet__modalTabs scrollbar-thin" aria-label="Seções"></nav>
+              <div id="tabletModalBody" class="mz-tablet__modalBody scrollbar-thin"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <div id="previewBar">
+    <button data-state="main">MAIN</button>
+    <button data-state="players">JOGADORES</button>
+    <button data-state="modal">MODAL</button>
+  </div>
+
+  <script>window.GetParentResourceName = function () { return 'mz_menu'; };</script>
+  <script src="app.js"></script>
+  <script>
+    const MODEL = {
+      title: 'ADMIN', brand: 'MZ FRAMEWORK',
+      user: { name: 'Staff Teste Longo', role: 'Owner', owner: true },
+      tabs: [
+        { id: 'main', label: 'MAIN', icon: 'shield' },
+        { id: 'players', label: 'JOGADORES', icon: 'users' },
+        { id: 'admin', label: 'ADMIN', icon: 'settings' }
+      ]
+    };
+    const MAIN_VIEW = {
+      tab: 'main', category: 'main', title: 'Principal', subtitle: 'Ações rápidas da sua sessão',
+      rows: [
+        { icon: 'person-flying', title: 'NoClip', subtitle: 'Alterna modo livre autorizado pelo servidor.', primary: { action: 'noclip' } },
+        { icon: 'map-location-dot', title: 'Teleportar ao waypoint', subtitle: 'Vai até o ponto marcado no mapa.', primary: { action: 'tpm' } },
+        { icon: 'crosshairs', title: 'Copiar coordenadas', subtitle: 'Exibe coords de entidade e de solo.', primary: { action: 'loc' } },
+        { icon: 'heart-pulse', title: 'Curar a si mesmo', subtitle: 'Restaura vida, fome e sede.', primary: { action: 'selfHeal' } },
+        { icon: 'kit-medical', title: 'Reviver a si mesmo', subtitle: 'Conclui o ciclo canônico de respawn.', primary: { action: 'selfRevive' } },
+        { icon: 'shield', title: 'Colete 100', subtitle: 'Define o colete canônico em 100.', primary: { action: 'selfArmor' } },
+        { icon: 'shield-halved', title: 'Godmode', subtitle: 'Alterna invencibilidade local autorizada.', primary: { action: 'selfGodmode' } }
+      ]
+    };
+    const PLAYERS_VIEW = {
+      tab: 'players', category: 'players', title: 'Jogadores', subtitle: 'Filtro: online · 6 resultado(s)',
+      searchable: true, workspace: true, layout: 'grid',
+      filters: [ { id: 'online', label: 'Online' }, { id: 'offline', label: 'Offline' }, { id: 'all', label: 'Todos' } ],
+      activeFilter: 'online',
+      rows: [
+        { key: 'character:A', title: 'Rafael Souza', subtitle: 'ID 3 · ping 12 ms', status: { label: 'online', variant: 'success' }, primary: { action: 'select', args: { key: 'character:A' } } },
+        { key: 'character:B', title: 'Mariana Lima', subtitle: 'ID 7 · ping 45 ms', status: { label: 'online', variant: 'success' }, primary: { action: 'select', args: { key: 'character:B' } } },
+        { key: 'character:C', title: 'Carlos Eduardo', subtitle: 'ID 12 · ping 8 ms', status: { label: 'online', variant: 'success' }, primary: { action: 'select', args: { key: 'character:C' } } },
+        { key: 'character:D', title: 'Ana Beatriz', subtitle: 'ID 18 · ping 61 ms', status: { label: 'online', variant: 'success' }, primary: { action: 'select', args: { key: 'character:D' } } },
+        { key: 'character:E', title: 'Pedro Henrique', subtitle: 'Offline · CID MZ-8877', status: { label: 'offline', variant: 'neutral' }, primary: { action: 'select', args: { key: 'character:E' } } },
+        { key: 'character:F', title: 'Julia Castro', subtitle: 'ID 21 · ping 22 ms', status: { label: 'online', variant: 'success' }, primary: { action: 'select', args: { key: 'character:F' } } }
+      ]
+    };
+    const MODAL = {
+      title: 'Rafael Souza', subtitle: 'Online · ID 3',
+      tabs: [
+        { id: 'actions', label: 'Ações', icon: 'bolt' },
+        { id: 'info', label: 'Informações', icon: 'info' },
+        { id: 'characters', label: 'Personagens', icon: 'users' },
+        { id: 'history', label: 'Histórico', icon: 'history' },
+        { id: 'security', label: 'Segurança', icon: 'shield' },
+        { id: 'punishments', label: 'Punições', icon: 'ban' }
+      ],
+      content: {
+        actions: { rows: [
+          { icon: 'person-walking-arrow-right', title: 'Ir até o player', subtitle: 'O servidor resolve a posição do alvo.', primary: { action: 'goto' } },
+          { icon: 'people-arrows-left-right', title: 'Trazer o player', subtitle: 'O servidor resolve a posição do Staff.', primary: { action: 'bring' } },
+          { icon: 'heart-pulse', title: 'Curar o player', subtitle: 'Aplica heal no alvo online.', primary: { action: 'heal' } },
+          { icon: 'user-xmark', title: 'Remover o player', subtitle: 'Kick protegido por hierarquia e auditoria.', tone: 'danger', primary: { action: 'kick' } }
+        ] },
+        info: { rows: [
+          { icon: 'user', title: 'Nome', subtitle: 'Rafael Souza' },
+          { icon: 'address-card', title: 'Citizen ID', subtitle: 'MZ-1234' },
+          { icon: 'id-card', title: 'Conta', subtitle: '#7' },
+          { icon: 'circle-check', title: 'Status', subtitle: 'Online', status: { label: 'online', variant: 'success' } }
+        ] },
+        characters: { empty: 'Nenhum personagem persistido para esta conta.' },
+        history: { empty: 'Nenhum histórico de warns/bans para este personagem.' },
+        security: { empty: 'Nenhum incidente de segurança para este personagem.' },
+        punishments: { empty: 'Nenhuma punição ativa para este personagem.' }
+      }
+    };
+
+    function send(msg) { window.postMessage(msg, '*'); }
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        send({ action: 'openTablet', model: MODEL });
+        send({ action: 'tabletView', view: MAIN_VIEW });
+        document.querySelectorAll('#previewBar button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const state = btn.dataset.state;
+            if (state === 'main') { send({ action: 'tabletModalClose' }); send({ action: 'tabletView', view: MAIN_VIEW }); }
+            if (state === 'players') { send({ action: 'tabletModalClose' }); send({ action: 'tabletView', view: PLAYERS_VIEW }); }
+            if (state === 'modal') { send({ action: 'tabletModal', modal: MODAL }); }
+          });
+        });
+      }, 0);
+    });
+  </script>
+</body>
+</html>

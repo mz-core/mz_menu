@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MZ Menu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" class="app app--left">
+    <section id="contextPanel" class="mz-panel hidden" aria-live="polite">
+      <div class="mz-panel__accent" aria-hidden="true"></div>
+
+      <header class="mz-panel__header">
+        <button id="backBtn" class="mz-icon-btn hidden" type="button" title="Voltar" aria-label="Voltar"></button>
+        <span id="headerIcon" class="mz-panel__headerIcon hidden" aria-hidden="true"></span>
+        <div class="mz-panel__titleWrap">
+          <div class="mz-panel__eyebrowRow">
+            <span id="brand" class="mz-panel__brand">MZ Menu</span>
+            <span id="menuBadge" class="mz-panel__badge hidden"></span>
+          </div>
+          <h1 id="menuTitle" class="mz-panel__title">Menu</h1>
+          <p class="mz-panel__subtitle">
+            <span id="subtitleSeparator" class="hidden" aria-hidden="true"></span>
+            <span id="menuSubtitle"></span>
+          </p>
+        </div>
+        <button id="closeBtn" class="mz-icon-btn" type="button" title="Fechar" aria-label="Fechar"></button>
+      </header>
+
+      <section id="dashboardMeta" class="mz-dashboardMeta hidden">
+        <div id="userCard" class="mz-userCard hidden"></div>
+        <div id="statsGrid" class="mz-stats hidden"></div>
+      </section>
+
+      <div id="searchWrap" class="mz-search hidden">
+        <span class="mz-search__icon" aria-hidden="true"></span>
+        <input id="menuSearch" type="text" autocomplete="off" spellcheck="false" placeholder="Buscar..." />
+        <span id="searchHint" class="mz-search__hint">CTRL K</span>
+      </div>
+
+      <div id="selectorFilters" class="mz-selectorFilters hidden" role="group" aria-label="Filtrar jogadores"></div>
+      <p id="selectorSummary" class="mz-selectorSummary hidden" aria-live="polite"></p>
+
+      <div id="options" class="mz-options scrollbar-thin"></div>
+
+      <footer class="mz-panel__footer">
+        <span><b>↑ ↓</b> navegar</span>
+        <span><b>Enter</b> selecionar</span>
+        <span><b>Esc</b> voltar</span>
+        <button id="focusToggleBtn" class="mz-panel__focusToggle" type="button">
+          <b id="focusToggleKey">F6</b>
+          <span id="focusToggleLabel">liberar movimento</span>
+        </button>
+      </footer>
+    </section>
+
+    <section id="dialogOverlay" class="mz-dialogOverlay hidden">
+      <div id="dialog" class="mz-dialog"></div>
+    </section>
+
+    <div id="toasts" class="mz-toasts"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
