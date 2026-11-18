@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'MZ Core'
 description 'MZ Menu - reusable in-game menu/input/alert wrapper with custom MZ NUI and optional ox_lib fallback'
-version '0.4.0-test'
+version '0.4.1'
 
 ui_page 'web/index.html'
 
